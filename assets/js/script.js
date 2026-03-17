@@ -165,18 +165,95 @@ for (let i = 0; i < filterBtn.length; i++) {
 const form = document.querySelector("[data-form]");
 const formInputs = document.querySelectorAll("[data-form-input]");
 const formBtn = document.querySelector("[data-form-btn]");
+const formStatus = document.querySelector("[data-form-status]");
+const formBtnLabel = formBtn?.querySelector("span");
+
+const updateFormButtonState = function () {
+  if (!form || !formBtn) return;
+
+  if (form.checkValidity()) {
+    formBtn.removeAttribute("disabled");
+  } else {
+    formBtn.setAttribute("disabled", "");
+  }
+}
+
+const setFormStatus = function (message, type) {
+  if (!formStatus) return;
+
+  formStatus.textContent = message;
+  formStatus.classList.add("is-visible");
+  formStatus.classList.remove("is-success", "is-error");
+
+  if (type) {
+    formStatus.classList.add(`is-${type}`);
+  }
+}
 
 // add event to all form input field
 for (let i = 0; i < formInputs.length; i++) {
   formInputs[i].addEventListener("input", function () {
 
-    // check form validation
-    if (form.checkValidity()) {
-      formBtn.removeAttribute("disabled");
-    } else {
-      formBtn.setAttribute("disabled", "");
+    if (formStatus?.classList.contains("is-visible")) {
+      formStatus.classList.remove("is-visible", "is-success", "is-error");
+      formStatus.textContent = "";
     }
 
+    updateFormButtonState();
+
+  });
+}
+
+if (form) {
+  form.addEventListener("submit", async function (event) {
+    event.preventDefault();
+
+    if (!form.checkValidity()) {
+      updateFormButtonState();
+      return;
+    }
+
+    const recipient = form.dataset.recipient;
+
+    if (!recipient) {
+      setFormStatus("Missing recipient email configuration for the contact form.", "error");
+      return;
+    }
+
+    const formData = new FormData(form);
+
+    formBtn.setAttribute("disabled", "");
+
+    if (formBtnLabel) {
+      formBtnLabel.textContent = "Sending...";
+    }
+
+    try {
+      const response = await fetch(`https://formsubmit.co/ajax/${recipient}`, {
+        method: "POST",
+        body: formData,
+        headers: {
+          Accept: "application/json"
+        }
+      });
+
+      const result = await response.json();
+
+      if (!response.ok || result.success !== "true") {
+        throw new Error(result.message || "Unable to send message right now.");
+      }
+
+      form.reset();
+      setFormStatus("Message sent successfully. Check your inbox for the submission.", "success");
+    } catch (error) {
+      setFormStatus(error.message || "Sending failed. Please try again in a moment.", "error");
+    } finally {
+      if (formBtnLabel) {
+        formBtnLabel.textContent = "Send Message";
+      }
+
+      updateFormButtonState();
+    }
   });
 }
 

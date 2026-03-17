@@ -74,7 +74,7 @@
             <div class="contact-info">
               <p class="contact-title">Email</p>
 
-              <a href="mailto:davidcarnaje@gmail.com" class="contact-link">davidcarnaje@gmail.com</a>
+              <a href="mailto:carnajedavidjosh@gmail.com" class="contact-link">carnajedavidjosh@gmail.com</a>
             </div>
 
           </li>
@@ -752,7 +752,11 @@ teamwork skills.
 
           <h3 class="h3 form-title">Contact Form</h3>
 
-          <form action="#" class="form" data-form>
+            <form action="https://formsubmit.co/carnajedavidjosh@gmail.com" method="POST" class="form" data-form data-recipient="carnajedavidjosh@gmail.com">
+
+              <input type="hidden" name="_subject" value="New portfolio contact message">
+              <input type="hidden" name="_captcha" value="false">
+              <input type="text" name="_honey" class="form-honeypot" tabindex="-1" autocomplete="off">
 
             <div class="input-wrapper">
               <input type="text" name="fullname" class="form-input" placeholder="Full name" required data-form-input>
@@ -761,6 +765,8 @@ teamwork skills.
             </div>
 
             <textarea name="message" class="form-input" placeholder="Your Message" required data-form-input></textarea>
+
+              <p class="form-status" data-form-status aria-live="polite"></p>
 
             <button class="form-btn" type="submit" disabled data-form-btn>
               <ion-icon name="paper-plane"></ion-icon>
