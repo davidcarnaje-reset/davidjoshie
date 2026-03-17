@@ -238,14 +238,25 @@ if (form) {
       });
 
       const result = await response.json();
+      const isSuccess = response.ok && (
+        result.success === true ||
+        result.success === "true" ||
+        result.message === "success"
+      );
 
-      if (!response.ok || result.success !== "true") {
+      if (!isSuccess) {
         throw new Error(result.message || "Unable to send message right now.");
       }
 
       form.reset();
       setFormStatus("Message sent successfully. Check your inbox for the submission.", "success");
     } catch (error) {
+      if (error instanceof TypeError && form.action) {
+        // Fallback to standard POST if AJAX is blocked (e.g., local file CORS restrictions).
+        form.submit();
+        return;
+      }
+
       setFormStatus(error.message || "Sending failed. Please try again in a moment.", "error");
     } finally {
       if (formBtnLabel) {
