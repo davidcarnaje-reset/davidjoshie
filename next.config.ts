@@ -1,7 +1,6 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
-  /* config options here */
+const nextConfig = {
+  output: 'export',
+  // basePath: '/davidjoshie', <--- I-comment out muna kung gusto mo sa localhost:3000 lang
+  // assetPrefix: '/davidjoshie/',
+  images: { unoptimized: true },
 };
-
-export default nextConfig;
