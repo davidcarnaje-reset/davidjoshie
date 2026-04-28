@@ -1,831 +1,381 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Portfolio</title>
-
-  <!--
-    - favicon
-  -->
+  <title>David Josh | Win95 Portfolio</title>
   <link rel="shortcut icon" href="./assets/images/myself.ico" type="image/x-icon">
-
-  <!--
-    - custom css link
-  -->
   <link rel="stylesheet" href="./assets/css/style.css">
-
-  <!--
-    - google font link
-  -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
-
 <body>
 
-  <!--
-    - #MAIN
-  -->
+  <nav class="win-taskbar">
+    <div class="start-btn" id="startBtn">
+      <img src="https://win98icons.alexmeub.com/icons/png/windows-0.png" alt="Start" class="start-icon">
+      <span>Start</span>
+    </div>
+    <div class="taskbar-divider"></div>
+    
+    <ul class="taskbar-links">
+      <li class="task-btn active" data-target="home"><img src="https://win98icons.alexmeub.com/icons/png/computer_explorer-5.png"> <span>Overview</span></li>
+      <li class="task-btn" data-target="experience"><img src="https://win98icons.alexmeub.com/icons/png/file_lines-0.png"> <span>Experience</span></li>
+      <li class="task-btn" data-target="skills"><img src="https://win98icons.alexmeub.com/icons/png/gears-0.png"> <span>Skills</span></li>
+      <li class="task-btn" data-target="projects"><img src="https://win98icons.alexmeub.com/icons/png/directory_open_file_mydocs-4.png"> <span>Projects</span></li>
+      <li class="task-btn" data-target="contact"><img src="https://win98icons.alexmeub.com/icons/png/message_envelope_open-0.png"> <span>Contact</span></li>
+    </ul>
 
-  <main>
+    <div class="system-tray">
+      <img src="https://win98icons.alexmeub.com/icons/png/loudspeaker_rays-0.png">
+      <span id="clock" class="clock">12:00 PM</span>
+    </div>
+  </nav>
 
-    <!--
-      - #SIDEBAR
-    -->
+  <main class="desktop-area">
 
-    <aside class="sidebar" data-sidebar>
-
-      <div class="sidebar-info">
-
-        <figure class="avatar-box">
-          <img src="./assets/images/my-avatar.png" alt="Richard hanrick" width="80">
-        </figure>
-
-        <div class="info-content">
-          <h1 class="name" title="Djc">David Josh Carnaje</h1>
-
-          <p class="title">Web developer and Programmer</p>
+    <section id="home" class="page-section active">
+      <div class="bento-grid">
+        
+        <div class="win-window span-2">
+          <div class="win-titlebar">
+            <div class="title-text"><img src="https://win98icons.alexmeub.com/icons/png/user_card-0.png"> Profile.exe</div>
+            <div class="title-controls"><button class="win-btn">_</button><button class="win-btn">□</button><button class="win-btn">X</button></div>
+          </div>
+          <div class="win-content profile-content">
+            <img src="./assets/images/my-avatar.png" alt="David Josh" class="avatar-pixel">
+            <div class="info">
+              <h2>David Josh Carnaje</h2>
+              <p>Web Developer & Programmer</p>
+              <span class="win-badge">CS 2026</span>
+            </div>
+          </div>
         </div>
 
-        <button class="info_more-btn" data-sidebar-btn>
-          <span>Show Contacts</span>
-
-          <ion-icon name="chevron-down"></ion-icon>
-        </button>
-
-      </div>
-
-      <div class="sidebar-info_more">
-
-        <div class="separator"></div>
-
-        <ul class="contacts-list">
-
-          <li class="contact-item">
-
-            <div class="icon-box">
-              <ion-icon name="mail-outline"></ion-icon>
-            </div>
-
-            <div class="contact-info">
-              <p class="contact-title">Email</p>
-
-              <a href="mailto:carnajedavidjosh@gmail.com" class="contact-link">carnajedavidjosh@gmail.com</a>
-            </div>
-
-          </li>
-
-          <li class="contact-item">
-
-            <div class="icon-box">
-              <ion-icon name="phone-portrait-outline"></ion-icon>
-            </div>
-
-            <div class="contact-info">
-              <p class="contact-title">Phone</p>
-
-              <a href="tel:+639953079542" class="contact-link">+63 995 307 9542</a>
-            </div>
-
-          </li>
-
-          <li class="contact-item">
-
-            <div class="icon-box">
-              <ion-icon name="calendar-outline"></ion-icon>
-            </div>
-
-            <div class="contact-info">
-              <p class="contact-title">Birthday</p>
-
-              <time datetime="1982-06-23">June 24, 2002</time>
-            </div>
-
-          </li>
-
-          <li class="contact-item">
-
-            <div class="icon-box">
-              <ion-icon name="location-outline"></ion-icon>
-            </div>
-
-            <div class="contact-info">
-              <p class="contact-title">Location</p>
-
-              <address>Panghulo, Obando Bulacan, Philippines</address>
-            </div>
-
-          </li>
-
-        </ul>
-
-        <div class="separator"></div>
-
-        <ul class="social-list">
-
-          <li class="social-item">
-            <a href="https://www.facebook.com/minaxtwicexjosh.carnaje" class="social-link">
-              <ion-icon name="logo-facebook"></ion-icon>
-            </a>
-          </li>
-
-          <li class="social-item">
-            <a href="https://x.com/Djsanaoil" class="social-link">
-              <ion-icon name="logo-twitter"></ion-icon>
-            </a>
-          </li>
-
-          <li class="social-item">
-            <a href="https://www.instagram.com/davidjoshcarnaj/" class="social-link">
-              <ion-icon name="logo-instagram"></ion-icon>
-            </a>
-          </li>
-
-        </ul>
-
-      </div>
-
-    </aside>
-
-
-
-
-
-    <!--
-      - #main-content
-    -->
-
-    <div class="main-content">
-
-      <!--
-        - #NAVBAR
-      -->
-
-      <nav class="navbar">
-
-        <ul class="navbar-list">
-
-          <li class="navbar-item">
-            <button class="navbar-link  active" data-nav-link>About</button>
-          </li>
-
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Resume</button>
-          </li>
-
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Portfolio</button>
-          </li>
-
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Blog</button>
-          </li>
-
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Contact</button>
-          </li>
-
-        </ul>
-
-      </nav>
-
-
-
-
-
-      <!--
-        - #ABOUT
-      -->
-
-      <article class="about  active" data-page="about">
-
-        <header>
-          <h2 class="h2 article-title">About me</h2>
-        </header>
-
-        <section class="about-text">
-          <p>
-            To apply my knowledge in computer science and gain hands-on
-experience in software development, database management,
-and community-based system design. I aim to contribute to
-innovative IT projects while enhancing my technical and
-teamwork skills.
-          </p>
-
-          <p>
-            My job is to build your website so that it is functional and user-friendly but at the same time attractive.
-            Moreover, I
-            add personal touch to your product and make sure that is eye-catching and easy to use. My aim is to bring
-            across your
-            message and identity in the most creative way. I created web design for many famous brand companies.
-          </p>
-        </section>
-
-
-        <!--
-          - service
-        -->
-
-        <section class="service">
-
-          <h3 class="h3 service-title">What i'm doing</h3>
-
-          <ul class="service-list">
-
-            <li class="service-item">
-
-              <div class="service-icon-box">
-                <img src="./assets/images/flutterflow.svg
-                " alt="Flutterflow Icon" width="40">
-              </div>
-
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">Flutterflow</h4>
-
-                <p class="service-item-text">
-                  Can build Web and Mobile Apps using Flutterflow, a low-code platform for building cross-platform applications.
-                </p>
-              </div>
-
-            </li>
-
-            <li class="service-item">
-
-              <div class="service-icon-box">
-                <img src="./assets/images/repair.svg" alt="PC Repair Icon" width="40">
-              </div>
-
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">PC Repair</h4>
-
-                <p class="service-item-text">
-                  Can analyze and troubleshoot hardware and software issues, perform repairs, and maintain computer systems to ensure optimal performance.
-                </p>
-              </div>
-
-            </li>
-
-            <li class="service-item">
-
-              <div class="service-icon-box">
-                <img src="./assets/images/icon-app.svg" alt="mobile app icon" width="40">
-              </div>
-
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">Mobile apps</h4>
-
-                <p class="service-item-text">
-                  Can design, develop, and deploy mobile applications for iOS and Android platforms, utilizing programming languages such as Swift, Kotlin, or cross-platform frameworks like React Native or Flutter.
-                </p>
-              </div>
-
-            </li>
-
-            <li class="service-item">
-
-              <div class="service-icon-box">
-                <img src="./assets/images/coding.svg" alt="coding icon" width="40">
-              </div>
-
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">Coding</h4>
-
-                <p class="service-item-text">
-                  I can write clean, efficient, and maintainable code in various programming languages, following best practices and industry standards to create robust software solutions.
-                </p>
-              </div>
-
-            </li>
-
-          </ul>
-
-        </section>
-
-
-        <!--
-          - clients
-        -->
-
-        
-
-      </article>
-
-
-
-
-
-      <!--
-        - #RESUME
-      -->
-
-      <article class="resume" data-page="resume">
-
-        <header>
-          <h2 class="h2 article-title">Resume</h2>
-        </header>
-
-        <section class="timeline">
-
-          <div class="title-wrapper">
-            <div class="icon-box">
-              <ion-icon name="book-outline"></ion-icon>
-            </div>
-
-            <h3 class="h3">Education</h3>
+        <div class="win-window span-2">
+          <div class="win-titlebar">
+            <div class="title-text"><img src="https://win98icons.alexmeub.com/icons/png/address_book-0.png"> Contacts.ini</div>
+            <div class="title-controls"><button class="win-btn">X</button></div>
           </div>
-
-          <ol class="timeline-list">
-
-            <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title">Colegio De San Pascual Baylon</h4>
-
-              <span>2022 - 2026</span>
-
-              <p class="timeline-text">
-                Bachelor of Science in Computer Science
-              </p>
-
-            </li>
-
-            <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title">AMA Compute College - Caloocan University</h4>
-
-              <span>2020 — 2022</span>
-
-              <p class="timeline-text">
-                Senior High School - (STEM Strand)
-              </p>
-
-            </li>
-
-            <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title">Riveridge School Inc.</h4>
-
-              <span>2016 — 2020</span>
-
-              <p class="timeline-text">
-                High School
-              </p>
-
-            </li>
-
-          </ol>
-
-        </section>
-
-        <section class="timeline">
-
-          <div class="title-wrapper">
-            <div class="icon-box">
-              <ion-icon name="book-outline"></ion-icon>
-            </div>
-
-            <h3 class="h3">Experience</h3>
-          </div>
-
-          <ol class="timeline-list">
-
-            <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title">No Experience as of now</h4>
-
-              
-            </li>
-
-            
-
-          </ol>
-
-        </section>
-
-        <section class="skill">
-
-          <h3 class="h3 skills-title">My Technical Skills</h3>
-
-          <ul class="skills-list content-card">
-
-            <li class="skills-item">
-
-              <div class="title-wrapper">
-                <h5 class="h5">Web Dev: HTML, CSS, JS, PHP, MySQL</h5>
-                <data value="70">70%</data>
-              </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 70%;"></div>
-              </div>
-
-            </li>
-
-            <li class="skills-item">
-
-              <div class="title-wrapper">
-                <h5 class="h5">Mobile Dev: Flutter & Dart, Firebase</h5>
-                <data value="60">60%</data>
-              </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 60%;"></div>
-              </div>
-
-            </li>
-
-            <li class="skills-item">
-
-              <div class="title-wrapper">
-                <h5 class="h5">Tools: Power BI, Blender</h5>
-                <data value="68">68%</data>
-              </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 68%;"></div>
-              </div>
-
-            </li>
-
-            <li class="skills-item">
-
-              <div class="title-wrapper">
-                <h5 class="h5">Concepts: OOP, MVC, Database Design</h5>
-                <data value="70">70%</data>
-              </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 70%;"></div>
-              </div>
-
-            </li>
-
-          </ul>
-
-        </section>
-
-
-        <section class="skill">
-
-          <h3 class="h3 skills-title">My Soft Skills</h3>
-
-          <ul class="skills-list content-card">
-
-            <li class="skills-item">
-
-              <div class="title-wrapper">
-                <h5 class="h5">Communication</h5>
-                <data value="70">70%</data>
-              </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 70%;"></div>
-              </div>
-
-            </li>
-
-            <li class="skills-item">
-
-              <div class="title-wrapper">
-                <h5 class="h5">Problem Solving</h5>
-                <data value="80">80%</data>
-              </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 80%;"></div>
-              </div>
-
-            </li>
-
-            <li class="skills-item">
-
-              <div class="title-wrapper">
-                <h5 class="h5">Team Collaboration</h5>
-                <data value="80">80%</data>
-              </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 80%;"></div>
-              </div>
-
-            </li>
-
-            <li class="skills-item">
-
-              <div class="title-wrapper">
-                <h5 class="h5">Adaptability</h5>
-                <data value="100">100%</data>
-              </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 100%;"></div>
-              </div>
-
-            </li>
-
-          </ul>
-
-        </section>
-
-      </article>
-
-
-
-
-
-      <!--
-        - #PORTFOLIO
-      -->
-
-      <article class="portfolio" data-page="portfolio">
-
-        <header>
-          <h2 class="h2 article-title">Portfolio</h2>
-        </header>
-
-        <section class="projects">
-
-          <ul class="filter-list">
-
-            <li class="filter-item">
-              <button class="active" data-filter-btn>All</button>
-            </li>
-
-            <li class="filter-item">
-              <button data-filter-btn>Web design</button>
-            </li>
-
-            <li class="filter-item">
-              <button data-filter-btn>Applications</button>
-            </li>
-
-            <li class="filter-item">
-              <button data-filter-btn>Web development</button>
-            </li>
-
-          </ul>
-
-          <div class="filter-select-box">
-
-            <button class="filter-select" data-select>
-
-              <div class="select-value" data-selecct-value>Select category</div>
-
-              <div class="select-icon">
-                <ion-icon name="chevron-down"></ion-icon>
-              </div>
-
-            </button>
-
-            <ul class="select-list">
-
-              <li class="select-item">
-                <button data-select-item>All</button>
-              </li>
-
-              <li class="select-item">
-                <button data-select-item>Web design</button>
-              </li>
-
-              <li class="select-item">
-                <button data-select-item>Applications</button>
-              </li>
-
-              <li class="select-item">
-                <button data-select-item>Web development</button>
-              </li>
-
+          <div class="win-content">
+            <ul class="details-list">
+              <li>📧 carnajedavidjosh@gmail.com</li>
+              <li>📞 +63 995 307 9542</li>
+              <li>📅 June 24, 2002</li>
+              <li>📍 Panghulo, Obando Bulacan, Philippines</li>
             </ul>
-
           </div>
+        </div>
 
-          <ul class="project-list">
+        <div class="win-window span-2">
+          <div class="win-titlebar">
+            <div class="title-text"><img src="https://win98icons.alexmeub.com/icons/png/notepad_file-0.png"> About_Me.txt</div>
+            <div class="title-controls"><button class="win-btn">X</button></div>
+          </div>
+          <div class="win-content notepad-bg">
+            <p>To apply my knowledge in computer science and gain hands-on experience in software development, database management, and community-based system design. I aim to contribute to innovative IT projects while enhancing my technical and teamwork skills.</p>
+            <br>
+            <p>My job is to build your website so that it is functional and user-friendly but at the same time attractive. Moreover, I add personal touch to your product and make sure that is eye-catching and easy to use. My aim is to bring across your message and identity in the most creative way. I created web design for many famous brand companies.</p>
+          </div>
+        </div>
 
-        <li class="project-item active" data-filter-item data-category="web development" data-testimonials-item data-project-link="https://YUNG-LINK-NG-PROJECT.com">
-          <a href="#" onclick="event.preventDefault()">
-            <figure class="project-img">
-              <div class="project-item-icon-box"><ion-icon name="eye-outline"></ion-icon></div>
-              <img src="./assets/images/sisig.png" alt="Sisighans" data-testimonials-avatar>
-            </figure>
-
-            <h3 class="project-title" data-testimonials-title>Sisighans</h3>
-            <p class="project-category">Web development</p>
-
-            <div style="display: none;" data-testimonials-text>
-              <p style="margin-bottom: 15px;">Developed an online ordering website for a local food business with admin functionalities for managing menus, customers, and orders. Technologies: HTML, CSS, JavaScript, PHP, MySQL</p>
-              
-              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-                <img src="./assets/images/sisig2.png" style="width: 100%; border-radius: 8px;">
-                <img src="./assets/images/sisig3.png" style="width: 100%; border-radius: 8px;">
-              </div>
-            </div>
-          </a>
-        </li>
-
-        <li class="project-item active" data-filter-item data-category="web development" data-testimonials-item data-project-link="https://YUNG-LINK-NG-PROJECT.com">
-          <a href="#" onclick="event.preventDefault()">
-            <figure class="project-img">
-              <div class="project-item-icon-box"><ion-icon name="eye-outline"></ion-icon></div>
-              <img src="./assets/images/eide.png" alt="Eidetic" data-testimonials-avatar>
-            </figure>
-
-            <h3 class="project-title" data-testimonials-title>Eidetic</h3>
-            <p class="project-category">Web development</p>
-
-            <div style="display: none;" data-testimonials-text>
-              <p style="margin-bottom: 15px;">Created a web-based printing service platform that allows customers to upload files, place print orders online, and pick them up in-store once completed. Implemented simple order tracking and service management features. Technologies: HTML, CSS, JavaScript, PHP, MySQL</p>
-              
-              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-                <img src="./assets/images/eide2.png" style="width: 100%; border-radius: 8px;">
-                <img src="./assets/images/eide3.png" style="width: 100%; border-radius: 8px;">
-              </div>
-            </div>
-          </a>
-        </li>
-
-        <li class="project-item active" data-filter-item data-category="applications" data-testimonials-item data-project-link="https://pulse-ph.flutterflow.app/">
-          <a href="#" onclick="event.preventDefault()">
-            <figure class="project-img">
-              <div class="project-item-icon-box"><ion-icon name="eye-outline"></ion-icon></div>
-              <img src="./assets/images/pulse.png" alt="Pulse PH" data-testimonials-avatar>
-            </figure>
-
-            <h3 class="project-title" data-testimonials-title>Pulse PH</h3>
-            <p class="project-category">Application</p>
-
-            <div style="display: none;" data-testimonials-text>
-              <p style="margin-bottom: 15px;">Developed a mobile application using Flutter and Firebase to enhance communication and emergency reporting within local barangays. Integrated geolocation verification and real-time alert features for community safety. Technologies: Flutter, Firebase.</p>
-              
-              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-                <img src="./assets/images/pulse2.png" style="width: 100%; border-radius: 8px;">
-                <img src="./assets/images/pulse3.png" style="width: 100%; border-radius: 8px;">
-              </div>
-            </div>
-          </a>
-        </li>
-
-            
-
-            
-          </ul>
-
-        </section>
-
-      </article>
-
-
-
-
-
-      <!--
-        - #BLOG
-      -->
-
-      <article class="blog" data-page="blog">
-
-        <header>
-          <h2 class="h2 article-title">Blog</h2>
-        </header>
-
-        <section class="blog-posts">
-
-          <ul class="blog-posts-list">
-
-            <li class="blog-post-item">
-              <a href="#">
-
-                <figure class="blog-banner-box">
-                  <img src="./assets/images/blogerror.jpg" alt="Design conferences in 2022" loading="lazy">
-                </figure>
-
-                <div class="blog-content">
-
-                  <div class="blog-meta">
-                    <p class="blog-category">No Blog</p>
-
-                    <span class="dot"></span>
-
-                    <time datetime="2022-02-23">N/A</time>
-                  </div>
-
-                  <h3 class="h3 blog-item-title">For Future blog to be posted</h3>
-
-                  <p class="blog-text">
-                    BLOG NOT AVAILABLE AS OF NOW. BLOGS WILL BE POSTED IN THE FUTURE.
-                  </p>
-
+        <div class="win-window span-2">
+          <div class="win-titlebar">
+            <div class="title-text"><img src="https://win98icons.alexmeub.com/icons/png/gears-0.png"> What_Im_Doing.sys</div>
+          </div>
+          <div class="win-content">
+            <div class="services-grid">
+              <div class="service-item">
+                <img src="./assets/images/flutterflow.svg" width="40" alt="Flutterflow">
+                <div>
+                  <h4>Flutterflow</h4>
+                  <p>Can build Web and Mobile Apps using Flutterflow, a low-code platform for building cross-platform applications.</p>
                 </div>
+              </div>
+              <div class="service-item">
+                <img src="./assets/images/repair.svg" width="40" alt="PC Repair">
+                <div>
+                  <h4>PC Repair</h4>
+                  <p>Can analyze and troubleshoot hardware and software issues, perform repairs, and maintain computer systems.</p>
+                </div>
+              </div>
+              <div class="service-item">
+                <img src="./assets/images/icon-app.svg" width="40" alt="Mobile Apps">
+                <div>
+                  <h4>Mobile apps</h4>
+                  <p>Can design, develop, and deploy mobile applications for iOS and Android platforms utilizing Swift, Kotlin, React Native, or Flutter.</p>
+                </div>
+              </div>
+              <div class="service-item">
+                <img src="./assets/images/coding.svg" width="40" alt="Coding">
+                <div>
+                  <h4>Coding</h4>
+                  <p>I can write clean, efficient, and maintainable code in various programming languages, following best practices.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
-              </a>
-            </li>
+        <a href="./assets/resume.pdf" download class="win-window resume-box">
+          <div class="win-titlebar">
+            <div class="title-text"><img src="https://win98icons.alexmeub.com/icons/png/file_lines-0.png"> Resume.pdf</div>
+          </div>
+          <div class="win-content resume-content">
+            <img src="https://win98icons.alexmeub.com/icons/png/file_lines-0.png" class="large-icon">
+            <h3>My Resume</h3>
+            <p style="text-decoration: underline; margin-top:5px; color:var(--win-blue);">Download CV</p>
+          </div>
+        </a>
 
-          </ul>
+        <div class="win-window">
+          <div class="win-titlebar">
+            <div class="title-text"><img src="https://win98icons.alexmeub.com/icons/png/cd_audio_cd_a-3.png"> Winamp_Mini.exe</div>
+            <div class="title-controls"><button class="win-btn">X</button></div>
+          </div>
+          <div class="win-content winamp-bg">
+            <div class="winamp-screen">
+              <span id="winamp-status">WINAMP - PAUSED</span>
+              <marquee scrollamount="3" id="winamp-track">01. WASHED_Lofi_Vibes.mp3 *** </marquee>
+            </div>
+            <div class="winamp-controls">
+              <button class="winamp-btn" onclick="playMusic()">▶</button>
+              <button class="winamp-btn" onclick="pauseMusic()">⏸</button>
+              <button class="winamp-btn" onclick="stopMusic()">⏹</button>
+            </div>
+            <audio id="bg-audio" loop src="./assets/audio/WASHED.mp3"></audio>
+          </div>
+        </div>
 
-        </section>
+        <div class="win-window span-2">
+          <div class="win-titlebar">
+            <div class="title-text"><img src="https://win98icons.alexmeub.com/icons/png/book_open-0.png"> Verse_of_the_Day.txt</div>
+            <div class="title-controls"><button class="win-btn">X</button></div>
+          </div>
+          <div class="win-content notepad-bg" style="text-align: center; display: flex; flex-direction: column; justify-content: center; padding: 25px;">
+            <p style="font-size: 16px; font-style: italic; color: #333;">"So whether you eat or drink or whatever you do, do it all for the glory of God."</p>
+            <h4 style="margin-top: 15px; font-family: var(--font-classic); color: var(--win-blue);">- 1 Corinthians 10:31</h4>
+          </div>
+        </div>
 
-      </article>
+      </div>
+    </section>
 
+    <section id="experience" class="page-section">
+      <div class="bento-grid">
+        
+        <div class="win-window span-2">
+          <div class="win-titlebar">
+            <div class="title-text"><img src="https://win98icons.alexmeub.com/icons/png/book_open-0.png"> Timeline.doc</div>
+            <div class="title-controls"><button class="win-btn">X</button></div>
+          </div>
+          <div class="win-content">
+            <h3>🎓 Education</h3>
+            <ul class="timeline-list">
+              <li>
+                <h4>Colegio De San Pascual Baylon</h4>
+                <span>2022 - 2026</span>
+                <p>Bachelor of Science in Computer Science</p>
+                <span class="win-badge gold-badge">Magna Cum Laude</span>
+              </li>
+              <li>
+                <h4>AMA Compute College - Caloocan University</h4>
+                <span>2020 — 2022</span>
+                <p>Senior High School - (STEM Strand)</p>
+              </li>
+              <li>
+                <h4>Riveridge School Inc.</h4>
+                <span>2016 — 2020</span>
+                <p>High School</p>
+              </li>
+            </ul>
+            <br>
+            <h3>💼 Experience</h3>
+            <ul class="timeline-list">
+              <li><h4>No Experience as of now</h4></li>
+            </ul>
+          </div>
+        </div>
 
+      </div>
+    </section>
 
+    <section id="skills" class="page-section">
+      <div class="bento-grid">
+        
+        <div class="win-window span-2">
+          <div class="win-titlebar">
+            <div class="title-text"><img src="https://win98icons.alexmeub.com/icons/png/console_prompt-0.png"> Tech_Skills.bat</div>
+          </div>
+          <div class="win-content tech-content">
+            <span class="tech-badge"><ion-icon name="logo-html5" style="color:#e34f26"></ion-icon> HTML</span>
+            <span class="tech-badge"><ion-icon name="logo-css3" style="color:#1572b6"></ion-icon> CSS</span>
+            <span class="tech-badge"><ion-icon name="logo-javascript" style="color:#f7df1e"></ion-icon> JavaScript</span>
+            <span class="tech-badge"><ion-icon name="logo-react" style="color:#61dbfb"></ion-icon> React</span>
+            <span class="tech-badge"><ion-icon name="logo-vue" style="color:#4fc08d"></ion-icon> Vue</span>
+            <span class="tech-badge"><ion-icon name="code-slash" style="color:#000"></ion-icon> Next.js</span>
+            <span class="tech-badge"><ion-icon name="server" style="color:#777bb4"></ion-icon> PHP</span>
+            <span class="tech-badge"><ion-icon name="cafe" style="color:#f89820"></ion-icon> Java</span>
+          </div>
+        </div>
 
+        <div class="win-window span-2">
+          <div class="win-titlebar">
+            <div class="title-text"><img src="https://win98icons.alexmeub.com/icons/png/users-1.png"> Soft_Skills.txt</div>
+          </div>
+          <div class="win-content notepad-bg">
+            <ul class="retro-list">
+              <li><ion-icon name="checkmark-outline"></ion-icon> Communication</li>
+              <li><ion-icon name="checkmark-outline"></ion-icon> Problem Solving</li>
+              <li><ion-icon name="checkmark-outline"></ion-icon> Team Collaboration</li>
+              <li><ion-icon name="checkmark-outline"></ion-icon> Adaptability</li>
+            </ul>
+          </div>
+        </div>
 
-      <!--
-        - #CONTACT
-      -->
+      </div>
+    </section>
 
-      <article class="contact" data-page="contact">
+    <section id="projects" class="page-section">
+      <div class="bento-grid uniform-grid">
+        
+        <div class="win-window project-card" onclick="openModal('proj1')">
+          <div class="win-titlebar"><div class="title-text">Sisighans.exe</div></div>
+          <img src="./assets/images/sisig.png" alt="Sisighans">
+          <div class="project-info">
+            <h3>Sisighans</h3>
+            <p>Web development</p>
+          </div>
+          <div id="proj1-data" style="display:none;">
+            <img src="./assets/images/sisig.png" class="modal-main-img">
+            <p>Developed an online ordering website for a local food business with admin functionalities for managing menus, customers, and orders. Technologies: HTML, CSS, JavaScript, PHP, MySQL</p>
+            <div class="modal-gallery">
+              <img src="./assets/images/sisig2.png">
+              <img src="./assets/images/sisig3.png">
+            </div>
+            <a href="https://YUNG-LINK-NG-PROJECT.com" target="_blank" class="task-btn">Visit Live Project</a>
+          </div>
+        </div>
 
-        <header>
-          <h2 class="h2 article-title">Contact</h2>
-        </header>
+        <div class="win-window project-card" onclick="openModal('proj2')">
+          <div class="win-titlebar"><div class="title-text">Eidetic.exe</div></div>
+          <img src="./assets/images/eide.png" alt="Eidetic">
+          <div class="project-info">
+            <h3>Eidetic</h3>
+            <p>Web development</p>
+          </div>
+          <div id="proj2-data" style="display:none;">
+            <img src="./assets/images/eide.png" class="modal-main-img">
+            <p>Created a web-based printing service platform that allows customers to upload files, place print orders online, and pick them up in-store once completed. Technologies: HTML, CSS, JavaScript, PHP, MySQL</p>
+            <div class="modal-gallery">
+              <img src="./assets/images/eide2.png">
+              <img src="./assets/images/eide3.png">
+            </div>
+            <a href="https://YUNG-LINK-NG-PROJECT.com" target="_blank" class="task-btn">Visit Live Project</a>
+          </div>
+        </div>
 
-        <section class="mapbox" data-mapbox>
-          <figure>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d682.2317627437154!2d120.9486735195!3d14.696431747327006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397b478c2b2346d%3A0xd48bee10154b2ec1!2s197%20Lilac%20St%2C%20Panghulo%2C%20Obando%2C%203021%20Bulacan!5e0!3m2!1sen!2sph!4v1772884674223!5m2!1sen!2sph" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-          </figure>
-        </section>
+        <div class="win-window project-card" onclick="openModal('proj3')">
+          <div class="win-titlebar"><div class="title-text">Pulse_PH.apk</div></div>
+          <img src="./assets/images/pulse.png" alt="Pulse PH">
+          <div class="project-info">
+            <h3>Pulse PH</h3>
+            <p>Application</p>
+          </div>
+          <div id="proj3-data" style="display:none;">
+            <img src="./assets/images/pulse.png" class="modal-main-img">
+            <p>Developed a mobile application using Flutter and Firebase to enhance communication and emergency reporting within local barangays. Integrated geolocation verification and real-time alert features.</p>
+            <div class="modal-gallery">
+              <img src="./assets/images/pulse2.png">
+              <img src="./assets/images/pulse3.png">
+            </div>
+            <a href="https://pulse-ph.flutterflow.app/" target="_blank" class="task-btn">Visit Live Project</a>
+          </div>
+        </div>
 
-        <section class="contact-form">
+        <a href="https://github.com/davidcarnaje-reset" target="_blank" class="win-window project-card github-card">
+          <div class="win-titlebar"><div class="title-text">GitHub_Repos.url</div></div>
+          <div class="win-content" style="display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center;">
+            <ion-icon name="logo-github" style="font-size:60px; margin-bottom:15px; color:#333;"></ion-icon>
+            <h3>Want to see more?</h3>
+            <p>Check out my other repositories on GitHub.</p>
+            <span class="task-btn" style="margin-top:15px;">Visit GitHub</span>
+          </div>
+        </a>
 
-          <h3 class="h3 form-title">Contact Form</h3>
+      </div>
+    </section>
 
-            <form action="https://formsubmit.co/carnajedavidjosh@gmail.com" method="POST" class="form" data-form data-recipient="carnajedavidjosh@gmail.com">
+    <section id="contact" class="page-section">
+      <div class="bento-grid">
+        
+        <div class="win-window span-2">
+          <div class="win-titlebar">
+            <div class="title-text"><img src="https://win98icons.alexmeub.com/icons/png/world-0.png"> Location.map</div>
+          </div>
+          <div class="win-content" style="padding: 2px;">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d682.2317627437154!2d120.9486735195!3d14.696431747327006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397b478c2b2346d%3A0xd48bee10154b2ec1!2s197%20Lilac%20St%2C%20Panghulo%2C%20Obando%2C%203021%20Bulacan!5e0!3m2!1sen!2sph!4v1772884674223!5m2!1sen!2sph" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+          </div>
+        </div>
 
+        <div class="win-window span-2">
+          <div class="win-titlebar">
+            <div class="title-text"><img src="https://win98icons.alexmeub.com/icons/png/message_envelope_open-0.png"> Send_Message.exe</div>
+          </div>
+          <div class="win-content">
+            <form action="https://formsubmit.co/carnajedavidjosh@gmail.com" method="POST" id="contactForm" class="retro-form">
               <input type="hidden" name="_subject" value="New portfolio contact message">
               <input type="hidden" name="_captcha" value="false">
-              <input type="text" name="_honey" class="form-honeypot" tabindex="-1" autocomplete="off">
-
-            <div class="input-wrapper">
-              <input type="text" name="fullname" class="form-input" placeholder="Full name" required data-form-input>
-
-              <input type="email" name="email" class="form-input" placeholder="Email address" required data-form-input>
-            </div>
-
-            <textarea name="message" class="form-input" placeholder="Your Message" required data-form-input></textarea>
-
-              <p class="form-status" data-form-status aria-live="polite"></p>
-
-            <button class="form-btn" type="submit" disabled data-form-btn>
-              <ion-icon name="paper-plane"></ion-icon>
-              <span>Send Message</span>
-            </button>
-
-          </form>
-
-        </section>
-
-      </article>
-
-    </div>
-  <div class="modal-container" data-modal-container>
-        <div class="overlay" data-overlay></div>
-
-        <section class="testimonials-modal portfolio-modal-custom">
-
-              <button class="modal-close-btn" data-modal-close-btn>
-                <ion-icon name="close-outline"></ion-icon>
-              </button>
-
-              <div class="modal-main-img-wrapper">
-                <figure class="modal-avatar-box">
-                  <img src="" alt="" data-modal-img id="main-modal-display">
-                </figure>
+              <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+              
+              <div class="input-row">
+                <input type="text" name="fullname" placeholder="Full name" required>
+                <input type="email" name="email" placeholder="Email address" required>
               </div>
+              <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+              
+              <button type="submit" class="task-btn" style="margin-top: 10px;">Send Message</button>
+            </form>
+          </div>
+        </div>
 
-              <div class="modal-content">
-                <h4 class="h3 modal-title" data-modal-title></h4>
-                
-                <div data-modal-text class="modal-text"></div>
+      </div>
+    </section>
 
-                <a href="#" target="_blank" class="form-btn modal-link-btn" id="modal-project-link">
-                  <ion-icon name="open-outline"></ion-icon>
-                  <span>Visit Live Project</span>
-                </a>
-              </div>
-
-        </section>
-    </div>
   </main>
 
+  <div class="modal-overlay" id="projectModal">
+    <div class="win-window retro-modal">
+      <div class="win-titlebar">
+        <div class="title-text" id="modal-title">Project Details</div>
+        <div class="title-controls"><button class="win-btn" onclick="closeModal()">X</button></div>
+      </div>
+      <div class="win-content" id="modal-content">
+        </div>
+    </div>
+  </div>
 
+  <div class="modal-overlay" id="gameModal">
+    <div class="win-window retro-modal" style="width: 300px; text-align: center;">
+      <div class="win-titlebar">
+        <div class="title-text"><img src="https://win98icons.alexmeub.com/icons/png/game_mine_1-0.png"> Minesweeper.exe</div>
+        <div class="title-controls"><button class="win-btn" onclick="closeGame()">X</button></div>
+      </div>
+      <div class="win-content" style="background: #c0c0c0; padding: 10px;">
+        
+        <div style="display: flex; justify-content: space-between; align-items: center; background: #c0c0c0; border: 2px inset #fff; padding: 5px; margin-bottom: 10px;">
+          <div class="digital-counter">010</div>
+          <button class="win-btn" style="width: 32px; height: 32px; font-size: 20px;" onclick="initMinesweeper()" id="smileBtn">🙂</button>
+          <div class="digital-counter">000</div>
+        </div>
 
+        <div class="minesweeper-board" id="minesweeperBoard"></div>
+        
+        <p style="font-size: 10px; margin-top: 10px; color: #555;">Right-click to flag 🚩</p>
+      </div>
+    </div>
+  </div>
 
-
-
-  <!--
-    - custom js link
-  -->
   <script src="./assets/js/script.js"></script>
-
-  <!--
-    - ionicon link
-  -->
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-
 </body>
-
 </html>

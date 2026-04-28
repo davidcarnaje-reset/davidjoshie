@@ -1,293 +1,260 @@
 'use strict';
 
+/**
+ * 1. SINGLE PAGE NAVIGATION
+ */
+const taskButtons = document.querySelectorAll('.task-btn');
+const sections = document.querySelectorAll('.page-section');
 
-
-// element toggle function
-const elementToggleFunc = function (elem) { elem.classList.toggle("active"); }
-
-
-
-// sidebar variables
-const sidebar = document.querySelector("[data-sidebar]");
-const sidebarBtn = document.querySelector("[data-sidebar-btn]");
-
-// sidebar toggle functionality for mobile
-sidebarBtn.addEventListener("click", function () { elementToggleFunc(sidebar); });
-
-
-
-// testimonials variables
-const testimonialsItem = document.querySelectorAll("[data-testimonials-item]");
-const modalContainer = document.querySelector("[data-modal-container]");
-const modalCloseBtn = document.querySelector("[data-modal-close-btn]");
-const overlay = document.querySelector("[data-overlay]");
-
-// modal variable
-const modalImg = document.querySelector("[data-modal-img]");
-const modalTitle = document.querySelector("[data-modal-title]");
-const modalText = document.querySelector("[data-modal-text]");
-
-// modal toggle function
-const testimonialsModalFunc = function () {
-  modalContainer.classList.toggle("active");
-  overlay.classList.toggle("active");
-}
-
-// add click event to all modal items
-for (let i = 0; i < testimonialsItem.length; i++) {
-  testimonialsItem[i].addEventListener("click", function () {
-    
-    // Set Main Content
-    modalImg.src = this.querySelector("[data-testimonials-avatar]").src;
-    modalImg.alt = this.querySelector("[data-testimonials-avatar]").alt;
-    modalTitle.innerHTML = this.querySelector("[data-testimonials-title]").innerHTML;
-    modalText.innerHTML = this.querySelector("[data-testimonials-text]").innerHTML;
-
-    // Link handling
-    const projectLink = this.closest('.project-item')?.getAttribute('data-project-link');
-    const modalLinkBtn = document.getElementById("modal-project-link");
-    if (projectLink) {
-      modalLinkBtn.style.display = "inline-flex";
-      modalLinkBtn.href = projectLink;
-    } else {
-      modalLinkBtn.style.display = "none";
-    }
-
-    // GALLERY CLICK LOGIC:
-    // Kapag kinlik ang gallery image sa loob ng modal, magiging main image siya
-    const galleryImages = modalText.querySelectorAll("img");
-    galleryImages.forEach(img => {
-      img.classList.add("gallery-item"); // Apply styling
-      img.addEventListener("click", function() {
-        document.getElementById("main-modal-display").src = this.src;
-      });
-    });
-
-    testimonialsModalFunc();
-  });
-}
-
-// add click event to modal close button
-modalCloseBtn.addEventListener("click", testimonialsModalFunc);
-overlay.addEventListener("click", testimonialsModalFunc);
-
-// portfolio variables
-const projectItem = document.querySelectorAll("[data-project-item]");
-
-// add click event to all portfolio items
-for (let i = 0; i < projectItem.length; i++) {
-
-  projectItem[i].addEventListener("click", function (event) {
-    // Para hindi mag-refresh ang page dahil sa <a> tag
-    event.preventDefault();
-
-    // Kunin ang info mula sa portfolio item
-    const img = this.querySelector("[data-project-img]");
-    const title = this.querySelector("[data-project-title]");
-    const text = this.querySelector("[data-project-text]");
-
-    // I-update ang modal gamit ang portfolio info
-    modalImg.src = img.src;
-    modalImg.alt = img.alt;
-    modalTitle.innerHTML = title.innerHTML;
-    
-    // Check kung may description, kung wala, default text
-    modalText.innerHTML = text ? text.innerHTML : "<p>No description available for this project.</p>";
-
-    // Buksan ang modal
-    testimonialsModalFunc();
-
-  });
-
-}
-
-// custom select variables
-const select = document.querySelector("[data-select]");
-const selectItems = document.querySelectorAll("[data-select-item]");
-const selectValue = document.querySelector("[data-selecct-value]");
-const filterBtn = document.querySelectorAll("[data-filter-btn]");
-
-select.addEventListener("click", function () { elementToggleFunc(this); });
-
-// add event in all select items
-for (let i = 0; i < selectItems.length; i++) {
-  selectItems[i].addEventListener("click", function () {
-
-    let selectedValue = this.innerText.toLowerCase();
-    selectValue.innerText = this.innerText;
-    elementToggleFunc(select);
-    filterFunc(selectedValue);
-
-  });
-}
-
-// filter variables
-const filterItems = document.querySelectorAll("[data-filter-item]");
-
-const filterFunc = function (selectedValue) {
-
-  for (let i = 0; i < filterItems.length; i++) {
-
-    if (selectedValue === "all") {
-      filterItems[i].classList.add("active");
-    } else if (selectedValue === filterItems[i].dataset.category) {
-      filterItems[i].classList.add("active");
-    } else {
-      filterItems[i].classList.remove("active");
-    }
-
+function navigateTo(targetID) {
+  sections.forEach(sec => sec.classList.remove('active'));
+  
+  const targetSection = document.getElementById(targetID);
+  if (targetSection) {
+    targetSection.classList.add('active');
+    window.scrollTo(0, 0); 
   }
 
-}
-
-// add event in all filter button items for large screen
-let lastClickedBtn = filterBtn[0];
-
-for (let i = 0; i < filterBtn.length; i++) {
-
-  filterBtn[i].addEventListener("click", function () {
-
-    let selectedValue = this.innerText.toLowerCase();
-    selectValue.innerText = this.innerText;
-    filterFunc(selectedValue);
-
-    lastClickedBtn.classList.remove("active");
-    this.classList.add("active");
-    lastClickedBtn = this;
-
+  taskButtons.forEach(btn => {
+    btn.classList.remove('active');
+    if (btn.getAttribute('data-target') === targetID) {
+      btn.classList.add('active');
+    }
   });
-
 }
 
+taskButtons.forEach(btn => {
+  btn.addEventListener('click', function() {
+    const target = this.getAttribute('data-target');
+    if(target) navigateTo(target);
+  });
+});
+
+/**
+ * 2. TASKBAR CLOCK
+ */
+const clockElement = document.getElementById('clock');
+function updateClock() {
+  if(!clockElement) return;
+  const now = new Date();
+  let hours = now.getHours();
+  let minutes = now.getMinutes();
+  const ampm = hours >= 12 ? 'PM' : 'AM';
+  hours = hours % 12;
+  hours = hours ? hours : 12; 
+  minutes = minutes < 10 ? '0' + minutes : minutes;
+  clockElement.textContent = hours + ':' + minutes + ' ' + ampm;
+}
+setInterval(updateClock, 1000);
+updateClock();
 
 
-// contact form variables
-const form = document.querySelector("[data-form]");
-const formInputs = document.querySelectorAll("[data-form-input]");
-const formBtn = document.querySelector("[data-form-btn]");
-const formStatus = document.querySelector("[data-form-status]");
-const formBtnLabel = formBtn?.querySelector("span");
+/**
+ * 3. WINAMP PLAYER LOGIC
+ */
+const audio = document.getElementById('bg-audio');
+const winampStatus = document.getElementById('winamp-status');
 
-const updateFormButtonState = function () {
-  if (!form || !formBtn) return;
+function playMusic() {
+  if (!audio) return;
+  audio.play();
+  winampStatus.textContent = "WINAMP - PLAYING";
+  winampStatus.style.color = "#0f0";
+}
 
-  if (form.checkValidity()) {
-    formBtn.removeAttribute("disabled");
+function pauseMusic() {
+  if (!audio) return;
+  audio.pause();
+  winampStatus.textContent = "WINAMP - PAUSED";
+  winampStatus.style.color = "#aaa";
+}
+
+function stopMusic() {
+  if (!audio) return;
+  audio.pause();
+  audio.currentTime = 0; 
+  winampStatus.textContent = "WINAMP - STOPPED";
+  winampStatus.style.color = "#f00";
+}
+
+window.playMusic = playMusic;
+window.pauseMusic = pauseMusic;
+window.stopMusic = stopMusic;
+
+
+/**
+ * 4. PROJECT MODAL LOGIC
+ */
+const modalOverlay = document.getElementById('projectModal');
+const modalTitle = document.getElementById('modal-title');
+const modalContent = document.getElementById('modal-content');
+
+function openModal(projectId) {
+  const dataElement = document.getElementById(projectId + '-data');
+  const projectCard = document.querySelector(`[onclick="openModal('${projectId}')"]`);
+  
+  if (dataElement && projectCard) {
+    const title = projectCard.querySelector('h3').innerText;
+    modalTitle.innerText = title;
+    modalContent.innerHTML = dataElement.innerHTML;
+    modalOverlay.classList.add('active');
+  }
+}
+
+function closeModal() {
+  modalOverlay.classList.remove('active');
+  setTimeout(() => { modalContent.innerHTML = ''; }, 200); 
+}
+
+window.openModal = openModal;
+window.closeModal = closeModal;
+
+modalOverlay.addEventListener('click', function(e) {
+  if (e.target === modalOverlay) closeModal();
+});
+
+/**
+ * 5. EASTER EGG: MINESWEEPER GAME LOGIC
+ */
+const startBtn = document.getElementById('startBtn');
+const gameModal = document.getElementById('gameModal');
+
+// Game Variables
+const boardSize = 8;
+const numMines = 10;
+let grid = [];
+let isGameOver = false;
+
+// Open game when Start is clicked
+startBtn.addEventListener('click', () => {
+  gameModal.classList.add('active');
+  initMinesweeper();
+});
+
+// Close game window
+function closeGame() {
+  gameModal.classList.remove('active');
+}
+window.closeGame = closeGame;
+
+function initMinesweeper() {
+  const board = document.getElementById('minesweeperBoard');
+  document.getElementById('smileBtn').innerText = '🙂';
+  board.innerHTML = '';
+  grid = [];
+  isGameOver = false;
+
+  // 1. Create empty grid
+  for (let r = 0; r < boardSize; r++) {
+    let row = [];
+    for (let c = 0; c < boardSize; c++) {
+      const cell = document.createElement('div');
+      cell.classList.add('ms-cell');
+      
+      // Left Click (Reveal)
+      cell.addEventListener('click', () => revealCell(r, c));
+      
+      // Right Click (Flag)
+      cell.addEventListener('contextmenu', (e) => {
+        e.preventDefault();
+        toggleFlag(r, c);
+      });
+
+      board.appendChild(cell);
+      row.push({ isMine: false, revealed: false, isFlagged: false, element: cell });
+    }
+    grid.push(row);
+  }
+
+  // 2. Place random mines
+  let minesPlaced = 0;
+  while (minesPlaced < numMines) {
+    let r = Math.floor(Math.random() * boardSize);
+    let c = Math.floor(Math.random() * boardSize);
+    if (!grid[r][c].isMine) {
+      grid[r][c].isMine = true;
+      minesPlaced++;
+    }
+  }
+}
+window.initMinesweeper = initMinesweeper;
+
+function revealCell(r, c) {
+  if (isGameOver || grid[r][c].revealed || grid[r][c].isFlagged) return;
+  const cell = grid[r][c];
+  cell.revealed = true;
+  cell.element.classList.add('revealed');
+
+  if (cell.isMine) {
+    // Game Over - Hit a bomb
+    cell.element.innerText = '💣';
+    cell.element.classList.add('mine-hit');
+    gameOver(false);
   } else {
-    formBtn.setAttribute("disabled", "");
-  }
-}
-
-const setFormStatus = function (message, type) {
-  if (!formStatus) return;
-
-  formStatus.textContent = message;
-  formStatus.classList.add("is-visible");
-  formStatus.classList.remove("is-success", "is-error");
-
-  if (type) {
-    formStatus.classList.add(`is-${type}`);
-  }
-}
-
-// add event to all form input field
-for (let i = 0; i < formInputs.length; i++) {
-  formInputs[i].addEventListener("input", function () {
-
-    if (formStatus?.classList.contains("is-visible")) {
-      formStatus.classList.remove("is-visible", "is-success", "is-error");
-      formStatus.textContent = "";
-    }
-
-    updateFormButtonState();
-
-  });
-}
-
-if (form) {
-  form.addEventListener("submit", async function (event) {
-    event.preventDefault();
-
-    if (!form.checkValidity()) {
-      updateFormButtonState();
-      return;
-    }
-
-    const recipient = form.dataset.recipient;
-
-    if (!recipient) {
-      setFormStatus("Missing recipient email configuration for the contact form.", "error");
-      return;
-    }
-
-    const formData = new FormData(form);
-
-    formBtn.setAttribute("disabled", "");
-
-    if (formBtnLabel) {
-      formBtnLabel.textContent = "Sending...";
-    }
-
-    try {
-      const response = await fetch(`https://formsubmit.co/ajax/${recipient}`, {
-        method: "POST",
-        body: formData,
-        headers: {
-          Accept: "application/json"
+    // Safe spot
+    let count = countMines(r, c);
+    if (count > 0) {
+      cell.element.innerText = count;
+      // Classic Minesweeper Number Colors
+      const colors = ['', 'blue', 'green', 'red', 'darkblue', 'darkred', 'teal', 'black', 'gray'];
+      cell.element.style.color = colors[count];
+    } else {
+      // Flood fill empty spaces
+      for (let i = -1; i <= 1; i++) {
+        for (let j = -1; j <= 1; j++) {
+          if (r + i >= 0 && r + i < boardSize && c + j >= 0 && c + j < boardSize) {
+            revealCell(r + i, c + j);
+          }
         }
-      });
-
-      const result = await response.json();
-      const isSuccess = response.ok && (
-        result.success === true ||
-        result.success === "true" ||
-        result.message === "success"
-      );
-
-      if (!isSuccess) {
-        throw new Error(result.message || "Unable to send message right now.");
       }
-
-      form.reset();
-      setFormStatus("Message sent successfully. Check your inbox for the submission.", "success");
-    } catch (error) {
-      if (error instanceof TypeError && form.action) {
-        // Fallback to standard POST if AJAX is blocked (e.g., local file CORS restrictions).
-        form.submit();
-        return;
-      }
-
-      setFormStatus(error.message || "Sending failed. Please try again in a moment.", "error");
-    } finally {
-      if (formBtnLabel) {
-        formBtnLabel.textContent = "Send Message";
-      }
-
-      updateFormButtonState();
     }
-  });
+    checkWin();
+  }
 }
 
-
-
-// page navigation variables
-const navigationLinks = document.querySelectorAll("[data-nav-link]");
-const pages = document.querySelectorAll("[data-page]");
-
-// add event to all nav link
-for (let i = 0; i < navigationLinks.length; i++) {
-  navigationLinks[i].addEventListener("click", function () {
-
-    for (let i = 0; i < pages.length; i++) {
-      if (this.innerHTML.toLowerCase() === pages[i].dataset.page) {
-        pages[i].classList.add("active");
-        navigationLinks[i].classList.add("active");
-        window.scrollTo(0, 0);
-      } else {
-        pages[i].classList.remove("active");
-        navigationLinks[i].classList.remove("active");
+function countMines(r, c) {
+  let count = 0;
+  for (let i = -1; i <= 1; i++) {
+    for (let j = -1; j <= 1; j++) {
+      if (r + i >= 0 && r + i < boardSize && c + j >= 0 && c + j < boardSize) {
+        if (grid[r+i][c+j].isMine) count++;
       }
     }
+  }
+  return count;
+}
 
-  });
+function toggleFlag(r, c) {
+  if (isGameOver || grid[r][c].revealed) return;
+  const cell = grid[r][c];
+  cell.isFlagged = !cell.isFlagged;
+  cell.element.innerText = cell.isFlagged ? '🚩' : '';
+}
+
+function gameOver(win) {
+  isGameOver = true;
+  document.getElementById('smileBtn').innerText = win ? '😎' : '😵';
+  
+  // Reveal all bombs
+  for (let r = 0; r < boardSize; r++) {
+    for (let c = 0; c < boardSize; c++) {
+      if (grid[r][c].isMine && !grid[r][c].isFlagged) {
+        grid[r][c].element.innerText = '💣';
+        grid[r][c].element.classList.add('revealed');
+      }
+    }
+  }
+}
+
+function checkWin() {
+  let revealedCount = 0;
+  for (let r = 0; r < boardSize; r++) {
+    for (let c = 0; c < boardSize; c++) {
+      if (grid[r][c].revealed) revealedCount++;
+    }
+  }
+  // If all non-mine cells are revealed
+  if (revealedCount === (boardSize * boardSize) - numMines) {
+    gameOver(true);
+  }
 }
